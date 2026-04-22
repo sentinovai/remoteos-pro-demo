@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RemoteOS</title>
+  <link rel="icon" href="data:," />
+  <link rel="alternate icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-card">
+        <div class="brand-icon">R</div>
+        <div><h1>RemoteOS</h1><p>Execution-first remote workspace</p></div>
+      </div>
+      <section class="side-block">
+        <div class="block-label">Active Role</div>
+        <div class="role-switches">
+          <button class="role-btn" data-role="owner">Owner</button>
+          <button class="role-btn" data-role="worker">Worker</button>
+          <button class="role-btn" data-role="client">Client</button>
+        </div>
+      </section>
+      <section class="side-block profile-card">
+        <div class="avatar">J</div>
+        <div><div id="profileName" class="profile-name">John Carter</div><div id="profileRole" class="profile-role">Owner</div></div>
+      </section>
+      <nav class="nav-block" id="mainNav"></nav>
+      <section class="side-block promise">
+        <div class="block-label">System Promise</div>
+        <h3>Know what matters in 10 seconds</h3>
+        <p>Tasks, feedback, review state, blockers, and next action stay inside one offline system.</p>
+      </section>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><h2 id="pageTitle">Operations Hub</h2><p id="pageSubtitle">Clear priorities, live status, and next action.</p></div>
+        <div class="topbar-actions">
+          <div class="search-box">
+            <input id="searchInput" type="text" placeholder="Search clients, projects, tasks, messages" />
+            <button id="searchBtn" class="ghost-btn">Search</button>
+          </div>
+          <button id="resetDemoBtn" class="ghost-btn">Reset Workspace</button>
+          <button id="importBtn" class="ghost-btn">Import JSON</button>
+          <button id="exportBtn" class="primary-btn">Export JSON</button>
+        </div>
+      </header>
+      <section id="searchResults" class="search-results hidden"></section>
+      <section id="toast" class="toast hidden"></section>
+      <div id="view-root"></div>
+    </main>
+  </div>
+  <input id="importFileInput" type="file" accept="application/json" class="hidden" />
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
+
+
+
