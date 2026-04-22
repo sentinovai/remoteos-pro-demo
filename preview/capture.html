@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RemoteOS Pro Capture</title>
+  <link rel="icon" href="data:," />
+  <style>
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0a1221;color:#e8eef8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box}
+    .card{max-width:720px;width:100%;background:#131d31;border:1px solid #243653;border-radius:18px;padding:28px}
+    h1,p{margin:0 0 12px}
+    p{color:#aab7cf;line-height:1.6}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    a{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:600}
+    .primary{background:#f6f8fb;color:#10161f}
+    .ghost{border:1px solid #2a3f61;color:#cfe0ff;background:transparent}
+    code{color:#9ec3ff}
+  </style>
+</head>
+<body>
+  <section class="card">
+    <h1>Capture Entry</h1>
+    <p>This page opens the app safely without embedding <code>index.html</code> inside a frame.</p>
+    <p id="captureMessage">Open the selected view directly in the app.</p>
+    <div class="actions">
+      <a id="openSelected" class="primary" href="../index.html">Open selected view</a>
+      <a class="ghost" href="../index.html">Open app home</a>
+      <a class="ghost" href="./index.html">Open preview gallery</a>
+    </div>
+  </section>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const targetView = params.get('view') || 'dashboard';
+    const openSelected = document.getElementById('openSelected');
+    const captureMessage = document.getElementById('captureMessage');
+    if(location.protocol === 'file:') {
+      openSelected.removeAttribute('href');
+      openSelected.setAttribute('aria-disabled', 'true');
+      openSelected.style.pointerEvents = 'none';
+      openSelected.style.opacity = '0.55';
+      captureMessage.textContent = 'Preview capture is disabled in direct desktop mode to prevent local self-load issues.';
+    } else {
+      openSelected.href = `../index.html#${targetView}`;
+      captureMessage.textContent = `Open the ${targetView} view directly in the app.`;
+    }
+  </script>
+</body>
+</html>
